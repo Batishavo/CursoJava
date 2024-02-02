@@ -1,0 +1,15 @@
+1.crear una funcion que no recibe argumentos
+pero devuelva como respuesta
+una lista de 10 numeros enteros aleatorios
+
+2.crear una funcion que recibe como parametro una lista de numeros enteros
+y regrese dos listas, una con los numeros pares y otra con los impares
+
+3.crear una funcion que recibe como argumento un correo (String) y regrese
+como respuesta un "OK" si el correo es un correo valido o un "ERROR"
+si el correo no es un correo valido
+
+4.crear una funcion que reciba como argumento un arreglo de string
+una vez recibido el arreglo, la funcion debe crear un archivo txt
+llamado cadenas.txt ,en alguna carpeta de tu computadora
+ en dicho archivo txt, cada renglon debera ser una cadena del arreglo
