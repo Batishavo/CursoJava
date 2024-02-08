@@ -1,0 +1,13 @@
+package com.romero.app.rutas.ENUMS;
+
+public enum TiposCamion {
+    VOLQUETE,
+    SEMIRREMOLQUE,
+    CAMION_PLATAFORMA,
+    CAMION_CISTERNA,
+    CAMION_REPARTIDOR,
+    CAMION_GRUA,
+    CAMION_BASCULANTE,
+    CAMION_MINERO,
+    CAMION_VOLQUETE_ARTICULADO
+}

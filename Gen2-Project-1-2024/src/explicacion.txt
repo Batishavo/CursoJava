@@ -1,0 +1,2 @@
+Este proyecto desmuestra como los impuesto afectan diferente a los activos y pasivos dependiendo el pais,
+se usa como ejemplo mexico y usa
