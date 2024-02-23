@@ -1,0 +1,14 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+nav{
+  background-color: #a8201b !important;
+  
+}
+
+.navbar-brand , .dropdown-toggle{
+  color: white !important;
+}
+
+

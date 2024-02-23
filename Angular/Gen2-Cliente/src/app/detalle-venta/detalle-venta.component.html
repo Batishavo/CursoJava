@@ -1,0 +1,130 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2>Ventas Cliente {{miLista[0].cliente.id}} :{{miLista[0].cliente.nombre}} {{miLista[0].cliente.apPaterno}}
+                {{miLista[0].cliente.apMaterno}}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card-body">
+                <h1></h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col"># id</th>
+                            <th scope="col">fecha</th>
+                            <th scope="col">subtotal</th>
+                            <th scope="col">Descuetno</th>
+                            <th scope="col">total</th>
+                            <th scope="col">forma Pago</th>
+                            <th scope="col">cliente</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--Aqui va el for each-->
+                        <tr *ngFor="let c of miLista">
+                            <th scope="row">{{c.id}}</th>
+                            <td>{{c.fecha}}</td>
+                            <td>{{c.subtotal}}</td>
+                            <td>{{c.descuento}}</td>
+                            <td>{{c.total}}</td>
+                            <td>{{c.formaPago}}</td>
+                            <td>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal" (click)="setDetalle(c.detalle)">
+                                    detalle venta
+                                </button>
+                            </td>
+                        </tr>
+                        <!--Aqui termina el foreach-->
+                    </tbody>
+                </table>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Detalle</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="accordion" id="accordionExample" *ngFor="let c of detalle">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button" type="button"
+                                                data-bs-toggle="collapse"
+                                                [attr.data-bs-target]="'#collaps'+c.id" 
+                                                aria-expanded="true"
+                                                >
+                                                #<strong>Id:</strong> {{c.id}}
+                                            </button>
+                                        </h2>
+                                        <div id="collaps{{c.id}}" class="accordion-collapse collapse "
+                                            data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <ul class="list-group" >
+                                                    <li class="list-group-item"> <strong>Id:</strong> {{c.id}} </li>
+                                                    <li class="list-group-item"> <strong>cantidad</strong>
+                                                        {{c.catnidad}} 
+                                                    </li>
+                                                    <h4>Producto</h4>
+                                                    <div>
+                                                        <ul class="list-group">
+                                                            <li class="list-group-item"> <strong>Id:</strong> {{c.producto.id}} </li>
+                                                            <li class="list-group-item"> <strong>Nombre:</strong> {{c.producto.nombre}} </li>
+                                                            <li class="list-group-item"> <strong>Descripcion:</strong> {{c.producto.descripcion}} </li>
+                                                            <li class="list-group-item"> <strong>Precio:</strong> {{c.producto.precio}} </li>
+                                                            <li class="list-group-item"> <strong>Categoria:</strong> {{c.producto.categoria}} </li>
+                                                        </ul>
+                                                    </div>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <ul class="list-group" *ngFor="let item of miLista">
+                    <li class="list-group-item"> <strong>Id:</strong> {{item.id}} </li>
+                    <li class="list-group-item"> <strong>Fecha</strong> {{item.fecha}} </li>
+                    <li class="list-group-item"> <strong>Subtotal</strong> {{item.subtotal}} </li>
+                    <li class="list-group-item"> <strong>Descuento</strong> {{item.descuento}} </li>
+                    <li class="list-group-item"> <strong>Total</strong> {{item.total}} </li>
+                    <li class="list-group-item"> <strong>FormaPago</strong> {{item.formaPago}} </li>
+                    <li class="list-group-item" *ngFor="let detalle of item.detalle">
+                        <div class="accordion" id="accordion{{detalle.id}}">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    [attr.data-bs-target]="'#collapse'+detalle.id" aria-expanded="true" >
+                                       <strong>Producto: </strong> {{detalle.id}}
+                                    </button>
+                                </h2>
+                                <div id="collapse{{detalle.id}}" class="accordion-collapse collapse "
+                                [attr.data-bs-target]="'#collapse'+detalle.id">
+                                    <div class="accordion-body">
+                                        <li class="list-group-item"> <strong>Id:</strong> {{detalle.id}} </li>
+                                        <li class="list-group-item"> <strong>Cantidad:</strong> {{detalle.catnidad}} </li>
+                                        <li class="list-group-item"> <strong>Producto:</strong> {{detalle.producto.nombre}} </li>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul> -->
+            </div>
+        </div>
+    </div>
+</div>

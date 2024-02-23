@@ -1,0 +1,138 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <mat-card>
+                <mat-card-header class="mb-3">
+                    <mat-card-title>Agregar Pokemon</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <!--Nombre-->
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput placeholder="Nombre del Pokemon" #nombre>
+                    </mat-form-field>
+                    <!--tipoPrimario-->
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Tipo Primario</mat-label>
+                        <mat-select [(ngModel)]="refereciaTipoPrimario">
+                            @for (tipo of tipos; track tipo) {
+                            <mat-option [value]="tipo">{{tipo}}</mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+                    <!--tipoSecundario-->
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Tipo Secundario</mat-label>
+                        <mat-select [(ngModel)]="referenciaTipoSecundario">
+                            @for (tipo of tipos; track tipo) {
+                            <mat-option [value]="tipo">{{tipo}}</mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+                    <!--Altura-->
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Altura</mat-label>
+                        <input matInput placeholder="Altura del Pokemon" #altura>
+                    </mat-form-field>
+                    <!--Peso-->
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Peso</mat-label>
+                        <input matInput placeholder="Peso del Pokemon" #peso>
+                    </mat-form-field>
+                    <!--Descripcion-->
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Descripcion</mat-label>
+                        <textarea matInput placeholder="Descripcion del Pokemon" #descripcion></textarea>
+                        <!--Imagen-->
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Imagen</mat-label>
+                        <input type="url" matInput placeholder="Nombre del Pokemon" #imagen>
+                    </mat-form-field>
+                    <!--Hp-->
+                    <mat-form-field class="example-full-width">
+                        <mat-label>HP</mat-label>
+                        <input matInput placeholder="HP del Pokemon" type="number" #hp>
+                    </mat-form-field>
+                    <!--ataque-->
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Ataque</mat-label>
+                        <input matInput placeholder="Ataque del Pokemon" type="number" #ataque>
+                    </mat-form-field>
+                    <!--defensa-->
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Defensa</mat-label>
+                        <input matInput placeholder="Defensa del Pokemon" type="number" #defensa>
+                    </mat-form-field>
+                    <!--ataque especial-->
+                    <mat-form-field class="example-full-width">
+                        <mat-label>AtaqueEspecial</mat-label>
+                        <input matInput placeholder="Ataque especial del Pokemon" type="number" #ataqueEspecial>
+                    </mat-form-field>
+                    <!--defensa especial-->
+                    <mat-form-field class="example-full-width">
+                        <mat-label>DefensaEspecial</mat-label>
+                        <input matInput placeholder="Defensa especial del Pokemon" type="number" #defensaEspecial>
+                    </mat-form-field>
+                    <!--velocidad-->
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Velocidad</mat-label>
+                        <input matInput placeholder="Velocidad del Pokemon" type="number" #velocidad>
+                    </mat-form-field>
+                    <!--habilidad-->
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Habilidad</mat-label>
+                        <!-- <input matInput placeholder="Nombre del Pokemon" #habilidad> -->
+                        <mat-select  placeholder="Selecciona una habilidad"  [(ngModel)]="habiliad">
+                            <mat-option *ngFor="let habilidad of habilidades" [value]="habilidad">
+                                {{ habilidad.nombre }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <!--Movimientos-->
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Movimientos 1</mat-label>
+                        <!-- <input matInput placeholder="Nombre del movimiento 1" #movimiento_1> -->
+                        <mat-select [compareWith]="compareMovimientos" placeholder="Selecciona un movimiento"  [(ngModel)]="posMovimientos[0]">
+                            <mat-option *ngFor="let movimiento of movimientos" [value]="movimiento">
+                                {{ movimiento.nombre }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Movimientos 2</mat-label>
+                        <!-- <input matInput placeholder="Nombre del movimiento 2" #movimiento_2> -->
+                        <mat-select [compareWith]="compareMovimientos" placeholder="Selecciona un movimiento" [(ngModel)]="posMovimientos[1]">
+                            <mat-option *ngFor="let movimiento of movimientos" [value]="movimiento">
+                                {{ movimiento.nombre }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Movimientos 3</mat-label>
+                        <!-- <input matInput placeholder="Nombre del movimiento 3" #movimiento_3> -->
+                        <mat-select [compareWith]="compareMovimientos" placeholder="Selecciona un movimiento" [(ngModel)]="posMovimientos[2]">
+                            <mat-option *ngFor="let movimiento of movimientos" [value]="movimiento">
+                                {{ movimiento.nombre }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Movimientos 4</mat-label>
+                        <!-- <input matInput placeholder="Nombre del movimiento 4" #movimiento_4> -->
+                        <mat-select [compareWith]="compareMovimientos" placeholder="Selecciona un movimiento" [(ngModel)]="posMovimientos[3]">
+                            <mat-option *ngFor="let movimiento of movimientos" [value]="movimiento">
+                                {{ movimiento.nombre }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <!--Imagen-->
+                </mat-card-content>
+                <mat-card-actions align="end">
+                    <button mat-button color="primary" (click)="postPokemon()">Agregar <mat-icon>done</mat-icon> </button>
+                    <!-- <button mat-button color="warn" (click)="limpiar()"><mat-icon>delete</mat-icon>Limpiar</button> -->
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>

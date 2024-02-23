@@ -1,0 +1,72 @@
+<div class="container" *ngIf="pokemon">
+    <div class="row">
+
+
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <img [src]="pokemon.imagen" class="img-fluid" alt="pokemon_image">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">{{pokemon.nombre}}</h2>
+                    <br>
+                    <label for=""><strong>Descripcion:</strong></label>
+                    <p class="card-text">{{pokemon.descripcion}}</p>
+                    <p class="card-text"><strong>Alturas</strong> : {{pokemon.altura}}</p>
+                    <p class="card-text"><strong>Peso</strong> : {{pokemon.peso}}</p>
+                    <button class="card-subtitle mb-2 text-muted badge" mat-flat-button color="primary">
+                        {{ pokemon.tipoSecundario !== null ? pokemon.tipoPrimario + ' / ' +
+                        pokemon.tipoSecundario :
+                        pokemon.tipoPrimario }}
+                        <mat-icon>favorite</mat-icon>
+                    </button>
+                    <hr>
+                    <label for=""><strong>Habilidad</strong> : {{ pokemon.habilidad.nombre}} </label>
+                    <p class="card-text">{{pokemon.habilidad.descripcion}}</p>
+                    <hr>
+                    <h3>Movimientos : </h3>
+                    <p class="card-text" *ngFor="let movimiento of pokemon.movimientos">
+                        <strong>{{movimiento.nombre}}</strong> : {{movimiento.descipcion}}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col mt-3">
+            <div class="card">
+                <div class="card-body">
+                    <h2>Estadisticas</h2>
+                    <p class="card-text"><strong>HP</strong> : {{pokemon.estadisticas.hp}}</p>
+                    <mat-progress-bar mode="determinate" value="{{pokemon.estadisticas.hp}}"></mat-progress-bar>
+
+                    <p class="card-text"><strong>Defensa Especial</strong> : {{pokemon.estadisticas.defensaEspecial}}
+                    </p>
+                    <mat-progress-bar mode="determinate"
+                        value="{{pokemon.estadisticas.defensaEspecial}}"></mat-progress-bar>
+
+                    <p class="card-text"><strong>Defensa</strong> : {{pokemon.estadisticas.defensa}}</p>
+                    <mat-progress-bar mode="determinate" value="{{pokemon.estadisticas.defensa}}"></mat-progress-bar>
+
+                    <p class="card-text"><strong>Ataque</strong> : {{pokemon.estadisticas.ataque}}</p>
+                    <mat-progress-bar mode="determinate" value="{{pokemon.estadisticas.ataque}}"></mat-progress-bar>
+
+                    <p class="card-text"><strong>Ataque Especial</strong> : {{pokemon.estadisticas.ataqueEspecial}}</p>
+                    <mat-progress-bar mode="determinate"
+                        value="{{pokemon.estadisticas.ataqueEspecial}}"></mat-progress-bar>
+
+                    <p class="card-text"><strong>Velocidad</strong> : {{pokemon.estadisticas.velocidad}}</p>
+                    <mat-progress-bar mode="determinate" value="{{pokemon.estadisticas.velocidad}}"></mat-progress-bar>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

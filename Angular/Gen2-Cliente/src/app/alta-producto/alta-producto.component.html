@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2>Listado de Productos</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+            <div class="form-gropu">
+                <label for="">nombre</label>
+                <input type="text" name="" id="" class="form-control" #nombre />
+            </div>
+
+            <div class="form-grop">
+                <label for="">descripcion</label>
+                <input type="text" name="" id="" class="form-control" #descripcion />
+            </div>
+    
+            <div class="fomr-group">
+                <label for="">stock</label>
+                <input type="text" name="Cadena2" id="Cadena3" class="form-control" #stock />
+            </div>
+    
+            <div class="fomr-group">
+                <label for="">precio</label>
+                <input type="text" name="Cadena2" id="Cadena3" class="form-control" #precio />
+            </div>
+    
+            <div class="fomr-group">
+                <label for="">categoria</label>
+                <select class="form-control" #categoria>
+                    <option *ngFor="let categoria of categorias">
+                       {{ categoria}}
+                    </option>
+                </select>
+            </div>
+    
+            <div class="form-group">
+                <button class="btn btn-success" (click)="gurardarProduct()">Guardar</button>
+            </div>
+    
+        </div>
+    </div>
+</div>

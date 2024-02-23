@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+           
+            <mat-card>
+                <mat-card-header class="mb-3">
+                    <mat-card-title>Agregar habilidad</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <form class="example-form">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Nombre</mat-label>
+                            <input matInput placeholder="Nombre de la habilidad"  #nombre>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Descripcion</mat-label>
+                            <textarea matInput placeholder="Descipcion de la habiliad" #descripcion></textarea>
+                        </mat-form-field>
+                    </form>
+                </mat-card-content>
+                <mat-card-actions align="end">
+                    <button mat-button color="primary" (click)="postPokemon()">Agregar <mat-icon>done</mat-icon> </button>
+                    <button mat-button color="warn" (click)="limpiar()"><mat-icon>delete</mat-icon>Limpiar</button>
+                </mat-card-actions>
+            </mat-card>
+            
+        </div>
+    </div>
+</div>

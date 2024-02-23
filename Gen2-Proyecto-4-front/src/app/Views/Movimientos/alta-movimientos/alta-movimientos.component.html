@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <mat-card>
+                <mat-card-header class="mb-3">
+                    <mat-card-title>Agregar Movimiento</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput placeholder="Nombre del Movimiento" #nombre>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Tipo</mat-label>
+
+                        <mat-select   [(ngModel)]="referenciaTipo">
+                            @for (tipo of tipos; track tipo ) {
+                            <mat-option [value]="tipo" >{{tipo }}</mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Descripcion</mat-label>
+                        <textarea matInput placeholder="Descipcion del Movimiento" #descripcion></textarea>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Poder</mat-label>
+                        <input maxlength="3" matInput placeholder="Poder" #poder type="number">
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Precision</mat-label>
+                        <input maxlength="3" matInput placeholder="precision" #precision type="number">
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Powe Points</mat-label>
+                        <input maxlength="3" matInput placeholder="pp" #pp type="number">
+                    </mat-form-field>
+
+                </mat-card-content>
+                <mat-card-actions align="end">
+                    <button mat-button color="primary" (click)="postMovimiento()">Agregar <mat-icon>done</mat-icon> </button>
+                    <button mat-button color="warn" (click)="limpiar()"><mat-icon>delete</mat-icon>Limpiar</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>

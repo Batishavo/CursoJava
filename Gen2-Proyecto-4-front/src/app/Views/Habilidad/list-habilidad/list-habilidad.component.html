@@ -1,0 +1,168 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+
+            <div class="example-button-row">
+                <div class="example-flex-container">
+                    <div class="example-button-container">
+                        <a href="habiliad/alta" mat-fab color="primary" aria-label="Example icon button with a delete icon">
+                            <mat-icon>add</mat-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                <!--- Note that these columns can be defined in any order.
+                      The actual rendered columns are set as a property on the row definition" -->
+
+                <!-- id Column -->
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef> #id </th>
+                    <td mat-cell *matCellDef="let element ">{{element.id}}</td>
+                </ng-container>
+
+                <!-- Nombre Column -->
+                <ng-container matColumnDef="nombre">
+                    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+                </ng-container>
+
+                <!-- Descipcion Column -->
+                <ng-container matColumnDef="descripcion">
+                    <th mat-header-cell *matHeaderCellDef> descripcion</th>
+                    <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="detalle">
+                    <th mat-header-cell *matHeaderCellDef>  </th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-flat-button color="primary" data-bs-toggle="modal" data-bs-target="#Modal-detalle"
+                            (click)="setHabilidad(element)">
+                            Detalle
+                            <mat-icon>search</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="editar">
+                    <th mat-header-cell *matHeaderCellDef> </th>
+                    <td mat-cell *matCellDef="let element">
+                        <button type="button" mat-flat-button color="accent" data-bs-toggle="modal"
+                            data-bs-target="#Modal-editar" (click)="setHabilidad(element)">
+                            editar
+                            <mat-icon>create</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="eliminar">
+                    <th mat-header-cell *matHeaderCellDef> </th>
+                    <td mat-cell *matCellDef="let element">
+                        <button type="button" mat-raised-button color="warn" data-bs-toggle="modal"
+                            data-bs-target="#Modal-eliminar" (click)="setHabilidad(element)">
+                            Eliminar
+                            <mat-icon>clear</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <!-- Modal Detalle-->
+            <div class="modal fade" id="Modal-detalle" tabindex="-1" aria-labelledby="Modal-detalle" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <mat-card class="example-card">
+                            <mat-card-header>
+                                <mat-card-subtitle>Detalle</mat-card-subtitle>
+                                <mat-card-title>{{ habilidadSelecionada.nombre}}</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content class="mt-3 mb-3">
+                                <h2><label>Descripcion:</label></h2>
+                                <p>{{habilidadSelecionada.descripcion}}</p>
+                                <mat-divider></mat-divider>
+                            </mat-card-content>
+                            <mat-card-actions>
+                                <button mat-button data-bs-dismiss="modal">Cerrar</button>
+                            </mat-card-actions>
+                            <mat-card-footer>
+                            </mat-card-footer>
+                        </mat-card>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Editar-->
+            <div class="modal fade" id="Modal-editar" tabindex="-1" aria-labelledby="Modal-editar" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <mat-card class="example-card">
+                            <mat-card-header>
+                                <mat-card-subtitle>habiliad</mat-card-subtitle>
+                                <mat-card-title>Habilidad : {{habilidadSelecionada.id}}</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <form class="example-form">
+
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Nombre</mat-label>
+                                        <input matInput value="{{habilidadSelecionada.nombre}}" #nombre>
+                                    </mat-form-field>
+
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Descipcion</mat-label>
+                                        <textarea matInput #descripcion>{{habilidadSelecionada.descripcion}}</textarea>
+                                    </mat-form-field>
+                                </form>
+                                <mat-divider></mat-divider>
+                            </mat-card-content>
+                            <mat-card-actions>
+                                <button mat-button data-bs-dismiss="modal" color="primary" (click)="updateHabilidad()">Editar</button>
+                                <button mat-button data-bs-dismiss="modal" color="warn">Cancelar</button>
+                            </mat-card-actions>
+                            <mat-card-footer>
+                            </mat-card-footer>
+                        </mat-card>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Modal Eliminar-->
+            <div class="modal fade" id="Modal-eliminar" tabindex="-1" aria-labelledby="Modal-eliminar"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <mat-card class="example-card">
+                            <mat-card-header class="mb-3 mt-3">
+                                <mat-card-subtitle>Eliminar</mat-card-subtitle>
+                                <mat-card-title>¿Estas Seguro? de eliminar {{habilidadSelecionada.nombre}}</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <p>Esta accion no se puede deshacer</p>
+                                <mat-divider></mat-divider>
+                            </mat-card-content>
+                            <mat-card-actions>
+                                <button mat-button data-bs-dismiss="modal">cancelar</button>
+                                <button 
+                                    mat-button 
+                                    data-bs-dismiss="modal" 
+                                    color="warn" 
+                                    (click)="deleteHabilidad(habilidadSelecionada.id)">
+                                        Eliminar
+                                </button>
+                            </mat-card-actions>
+                            <mat-card-footer>
+                            </mat-card-footer>
+                        </mat-card>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

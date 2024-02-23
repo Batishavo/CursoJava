@@ -1,0 +1,40 @@
+<div class="cotainer">
+    <div class="roe">
+      <div class="col-12 text-center">
+        <h2>Listado de clientes</h2>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"># id</th>
+            <th scope="col">fecha</th>
+            <th scope="col">subtotal</th>
+            <th scope="col">Descuetno</th>
+            <th scope="col">total</th>
+            <th scope="col">forma Pago</th>
+            <th scope="col">cliente</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!--Aqui va el for each-->
+          <tr *ngFor="let c of mylist">
+            <th scope="row">{{c.id}}</th>
+            <td>{{c.fecha}}</td>
+            <td>{{c.subtotal}}</td>
+            <td>{{c.descuento}}</td>
+            <td>{{c.total}}</td>
+            <td>{{c.formaPago}}</td>
+            <td>{{c.cliente.nombre}} {{c.cliente.apPaterno}} {{c.cliente.apMaterno}}</td>
+            <td></td>
+          </tr>
+          <!--Aqui termina el foreach-->
+        </tbody>
+      </table>
+    </div>
+  </div>

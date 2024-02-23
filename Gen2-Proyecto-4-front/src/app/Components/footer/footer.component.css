@@ -1,0 +1,17 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Establece el tamaño mínimo del cuerpo para que el footer permanezca abajo */
+    margin: 0;
+}
+
+/* Estilos del contenido */
+main {
+    flex: 1; /* El contenido ocupa todo el espacio disponible */
+}
+
+footer {
+    text-align: center;
+    width: 100%;
+    background-color: gray !important;
+}
